@@ -1,5 +1,5 @@
 import { useState, useEffect} from "react";
-
+import { Link } from 'react-router-dom';
 import ArticleCard from "./ArticleCard";
 import { getAllArticles } from "../src/api";
 
@@ -17,18 +17,15 @@ function ArticleList() {
       })
     }, [topic]);
   
-  
     const updateTopic = (event) => {
       setTopic (event.target.value);
     };
-
 
     if(isLoading) {
       return <h2> Loading ... </h2>
     }
 
     return (
-      
       <div>
         <label htmlFor="topic-selector">Choose a topic:</label>
         <p></p>
@@ -39,13 +36,14 @@ function ArticleList() {
         <option value="cooking">Cooking </option>
         <option value="coding">Coding </option>
         <option value="football">Football </option>
-     
       </select>
 
         <ul>
           {articles.map((article) => {
             return (
-            <ArticleCard article={article} key={article.article_id} />)
+              <Link to = {`/articles/${article.article_id}` }  key={article.article_id}>
+            <ArticleCard article={article} />
+            </Link>)
             ;
           })}
         </ul>
