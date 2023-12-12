@@ -1,9 +1,13 @@
+import { Link } from 'react-router-dom';
+
 function Nav(){
     return (
         
-    <div className="nav"> 
-        <p className="nav-icon"> Home </p> <p className="nav-icon"> Topics </p> <p className="nav-icon"> Articles </p>
-    </div>
+    <nav className="nav"> 
+        <Link className="nav-icon" to = "/"> Home </Link> 
+        <Link className="nav-icon" to = "/"> Topics </Link>  
+         <Link className="nav-icon" to = "/articles"> Articles </Link> 
+    </nav>
     )
 }
 

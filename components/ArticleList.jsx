@@ -6,11 +6,14 @@ import { getAllArticles } from "../src/api";
 function ArticleList() {
     const [articles, setArticles] = useState([]);
     const [topic, setTopic] = useState ("")
-  
+    const [isLoading, setIsLoading] = useState(true);
+
+
   useEffect(() => {
       getAllArticles(topic)
       .then((data) => {
           setArticles(data);
+          setIsLoading(false);
       })
     }, [topic]);
   
@@ -18,6 +21,11 @@ function ArticleList() {
     const updateTopic = (event) => {
       setTopic (event.target.value);
     };
+
+
+    if(isLoading) {
+      return <h2> Loading ... </h2>
+    }
 
     return (
       
