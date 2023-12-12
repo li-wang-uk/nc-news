@@ -18,3 +18,10 @@ export const getArticleById = (article_id) => {
         return data.articles;
     })
 }
+
+export const getAllCommentsById = (article_id) => {
+    return NcNewsApi.get(`/articles/${article_id}/comments`)
+    .then(({data}) => {
+        return data.comments;
+    })
+}
