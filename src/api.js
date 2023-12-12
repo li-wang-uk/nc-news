@@ -11,3 +11,10 @@ export const getAllArticles = (topic) => {
         return data.articles;
     })
 }
+
+export const getArticleById = (article_id) => {
+    return NcNewsApi.get(`/articles/${article_id}`)
+    .then(({data}) => {
+        return data.articles;
+    })
+}
