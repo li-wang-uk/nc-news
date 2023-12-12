@@ -1,0 +1,34 @@
+.article-card{
+    background-color:#BDE3FF;
+    padding: 2%;
+    display:inline-block;
+    max-width: fit-content;
+    max-height: max-content;
+
+    margin: 20px;
+    border-radius: 28px;
+}
+
+.article-img{
+    max-width:200px;
+    max-height:200px;
+    border-radius: 28px;
+}
+
+.header{
+    background-color: #BDE3FF;
+    padding: 2%;
+    display:grid;
+    max-width: fit-content;
+    max-height: fit-content;
+    margin: 20px;
+    border-radius: 10px;
+}
+.nav-icon{
+    background-color: #FFCD29;
+    padding: 2%;
+    display:inline-block;
+    max-width: fit-content;
+    margin: 2px;
+    border-radius: 10px;
+}
