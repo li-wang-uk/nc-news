@@ -34,3 +34,10 @@ export const patchArticleVote = (article_id, vote) => {
     })
 }
 
+export const postNewComment = (article_id,username,comment) => {
+    const newComment = {body: comment, author: username};
+    return NcNewsApi.post(`/articles/${article_id}/comments`, newComment)
+    .then(({data}) => {
+        return data.comment
+    })
+}

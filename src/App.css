@@ -53,3 +53,14 @@
     margin: 20px;
     border-radius: 28px;
 }
+
+.new-comment{
+    background-color:#bbf4c4;
+    padding: 2%;
+    display:inline-block;
+    max-width: fit-content;
+    max-height: max-content;
+
+    margin: 20px;
+    border-radius: 28px;
+}
