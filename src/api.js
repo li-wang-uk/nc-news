@@ -25,3 +25,12 @@ export const getAllCommentsById = (article_id) => {
         return data.comments;
     })
 }
+
+export const patchArticleVote = (article_id, vote) => {
+    const updatedVote =  {inc_votes:vote};
+    return NcNewsApi.patch(`/articles/${article_id}/`, updatedVote)
+    .then (({data}) => {
+        return data.articles.votes;
+    })
+}
+
