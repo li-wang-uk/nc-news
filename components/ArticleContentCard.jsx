@@ -9,6 +9,7 @@ function ArticleContentCard({article}) {
     const {article_id} = useParams();
     const [voteCount, setVoteCount] = useState(0)
     const [err,setErr] =useState(null);
+    const [message,setMessage] = useState(null)
     
     useEffect(() => {
         getArticleById(article_id)
@@ -21,6 +22,13 @@ function ArticleContentCard({article}) {
     const upVote = (id) => {
         setVoteCount((currentVote) => currentVote+1)
         patchArticleVote(id,1)
+        .catch((err) => {
+            setErr('Something went wrong, please try again.')
+            setVoteCount((currentVote) => currentVote-1)
+            patchArticleVote(id,-1)
+        })
+        setMessage("Vote sent")
+
     }
 
     const downVote = (id) => {
@@ -31,6 +39,7 @@ function ArticleContentCard({article}) {
             setVoteCount((currentVote) => currentVote+1)
             patchArticleVote(id,1)
         })
+        setMessage("Vote sent")
     }
 
     return (
@@ -43,9 +52,9 @@ function ArticleContentCard({article}) {
             <p> {article.body}</p>
         </section>
         <section>
-            <p> Votes: {voteCount} {err ? <p>{err}</p> : null}</p>
-            
-            <button onClick = {() => upVote( article.article_id)}> 
+            <p> Votes: {voteCount} {err ? <p>{err}</p> : null} </p>
+            <p>{message ? <p>{message}</p> : null}</p>
+            <button onClick = {() => upVote( article.article_id)}>  
             <span> 👍 </span>
             </button>
             <button onClick = {() => downVote( article.article_id)}> 
