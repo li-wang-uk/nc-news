@@ -21,11 +21,12 @@ function CommentList() {
       }
     return (
         <div>   
-            <NewComment setComments = {setComments}/>
-<ul>
+            <NewComment comments = {comments} setComments = {setComments}/>
+<ul >
+ 
     {comments.map((comment) => {
-        return (
-            <CommentCard comment = {comment} key = {comment.comment_id}/> 
+        return ( 
+            <CommentCard comment = {comment} key ={comment.comment_id} /> 
         )
     })}
 </ul>

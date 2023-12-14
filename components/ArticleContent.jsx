@@ -26,8 +26,8 @@ function ArticleContent() {
         <ul>
             {articleContent.map((article) => {
             return (
-            <ArticleContentCard article={article} key={article.article_id} />)
-            ;
+            <ArticleContentCard article={article} key={article.article_id} />
+            );
           })}
     
         </ul>
