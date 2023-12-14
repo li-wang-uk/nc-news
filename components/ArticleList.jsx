@@ -7,8 +7,6 @@ function ArticleList() {
     const [articles, setArticles] = useState([]);
     const [topic, setTopic] = useState ("")
     const [isLoading, setIsLoading] = useState(true);
-
-
   useEffect(() => {
       getAllArticles(topic)
       .then((data) => {

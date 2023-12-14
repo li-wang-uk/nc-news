@@ -26,9 +26,10 @@ function ArticleContentCard({article}) {
             setErr('Something went wrong, please try again.')
             setVoteCount((currentVote) => currentVote-1)
             patchArticleVote(id,-1)
+            
         })
         setMessage("Vote sent")
-
+        setErr(null)
     }
 
     const downVote = (id) => {
@@ -40,6 +41,7 @@ function ArticleContentCard({article}) {
             patchArticleVote(id,1)
         })
         setMessage("Vote sent")
+        setErr(null)
     }
 
     return (
@@ -52,8 +54,8 @@ function ArticleContentCard({article}) {
             <p> {article.body}</p>
         </section>
         <section>
-            <p> Votes: {voteCount} {err ? <p>{err}</p> : null} </p>
-            <p>{message ? <p>{message}</p> : null}</p>
+            <div> Votes: {voteCount} {err ? <p>{err}</p> : null} </div>
+            <div>{message ? <p>{message}</p> : null}</div>
             <button onClick = {() => upVote( article.article_id)}>  
             <span> 👍 </span>
             </button>

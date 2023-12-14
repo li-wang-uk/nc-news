@@ -9,9 +9,11 @@ import AllArticlesPage from "../pages/AllArticlesPage";
 import Nav from "../components/Nav";
 import IndividualArticalPage from "../pages/IndividualArticlePage";
 
+
 function App() {
 
   return (
+
     <BrowserRouter>
     <main className = "App">
 
@@ -26,6 +28,7 @@ function App() {
 
 </main>
     </BrowserRouter>
+
   )
 }
 
