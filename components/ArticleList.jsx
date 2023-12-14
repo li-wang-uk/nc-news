@@ -7,17 +7,27 @@ function ArticleList({topicInUrl}) {
     const [articles, setArticles] = useState([]);
     const [topic, setTopic] = useState (topicInUrl)
     const [isLoading, setIsLoading] = useState(true);
+    const [err,SetErr] =useState(false);
+  
   useEffect(() => {
       getAllArticles(topic)
       .then((data) => {
           setArticles(data);
           setIsLoading(false);
+          window.history.replaceState(null, null, `/articles?topics=${topic}`)
+      })
+      .catch((err) => {
+        SetErr("Something Wrong! Please try again later!");
       })
     }, [topic]);
+
+    
   
     const updateTopic = (event) => {
       setTopic (event.target.value);
     };
+
+
 
     if(isLoading) {
       return <h2> Loading ... </h2>
@@ -25,6 +35,7 @@ function ArticleList({topicInUrl}) {
 
     return (
       <div>
+       <section>  {err ? <p>{err}</p> : null}</section>
         <label htmlFor="topic-selector">Choose a topic:</label>
         <p></p>
         <select onChange={updateTopic} className="topic-options" id ="topic-selector">
