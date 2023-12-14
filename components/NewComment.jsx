@@ -26,12 +26,15 @@ function NewComment({comments,setComments}) {
         newComment.votes = 0;
         setComments((currComments) => {
         return[newComment,...currComments]
+
     })
 
         postNewComment(article_id,newComment)
         .catch((err) => {
             setErr('Something went wrong, please try again.')
-            
+            setComments((comments) => {
+                return comments.slice(1)
+            })
         })
         setInput("")
         setErr(false)
