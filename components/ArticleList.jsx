@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import ArticleCard from "./ArticleCard";
 import { getAllArticles } from "../src/api";
 
-function ArticleList() {
+function ArticleList({topicInUrl}) {
     const [articles, setArticles] = useState([]);
-    const [topic, setTopic] = useState ("")
+    const [topic, setTopic] = useState (topicInUrl)
     const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
       getAllArticles(topic)
@@ -28,6 +28,9 @@ function ArticleList() {
         <label htmlFor="topic-selector">Choose a topic:</label>
         <p></p>
         <select onChange={updateTopic} className="topic-options" id ="topic-selector">
+        <option value="" hidden>
+          Change Topics
+          </option>
         <option value="">
           All Topics
         </option>
