@@ -7,7 +7,7 @@ function ArticleList({topicInUrl}) {
     const [articles, setArticles] = useState([]);
     const [topic, setTopic] = useState (topicInUrl)
     const [isLoading, setIsLoading] = useState(true);
-    const [err,SetErr] =useState(false);
+    const [err,setErr] =useState(false);
   
   useEffect(() => {
       getAllArticles(topic)
@@ -17,10 +17,12 @@ function ArticleList({topicInUrl}) {
           window.history.replaceState(null, null, `/articles?topics=${topic}`)
       })
       .catch((err) => {
-        SetErr("Something Wrong! Please try again later!");
+        setErr("Something Wrong! Please try again later!");
       })
+      setErr(false);
     }, [topic]);
 
+ 
     
   
     const updateTopic = (event) => {
