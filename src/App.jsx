@@ -8,6 +8,7 @@ import Footer from "../components/Footer";
 import AllArticlesPage from "../pages/AllArticlesPage";
 import Nav from "../components/Nav";
 import IndividualArticalPage from "../pages/IndividualArticlePage";
+import AllTopicsPage from "../pages/AllTopicsPage";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
   <Route path='/' element = {<Home />} />
   <Route path='/articles' element = {<AllArticlesPage/>} />
   <Route path='/articles/:article_id' element = {<IndividualArticalPage/>} />
+  <Route path='/topics' element = {<AllTopicsPage/>} />
 </Routes>
 <Footer/>
 

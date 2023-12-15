@@ -41,3 +41,10 @@ export const postNewComment = (article_id,newComment) => {
         return data.comment
     })
 }
+
+export const getAllTopics = () => {
+    return NcNewsApi.get("/topics")
+    .then(({data}) => {
+        return data.topics;
+    })
+}

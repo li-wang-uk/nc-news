@@ -5,7 +5,7 @@ function Nav(){
         
     <nav className="nav"> 
         <Link className="nav-icon" to = "/"> Home </Link> 
-        <Link className="nav-icon" to = "/"> Topics </Link>  
+        <Link className="nav-icon" to = "/topics"> Topics </Link>   
          <Link className="nav-icon" to = "/articles"> Articles </Link> 
     </nav>
     )

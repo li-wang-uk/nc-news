@@ -3,21 +3,33 @@ import { Link } from 'react-router-dom';
 import ArticleCard from "./ArticleCard";
 import { getAllArticles } from "../src/api";
 
-function ArticleList() {
+function ArticleList({topicInUrl}) {
     const [articles, setArticles] = useState([]);
-    const [topic, setTopic] = useState ("")
+    const [topic, setTopic] = useState (topicInUrl)
     const [isLoading, setIsLoading] = useState(true);
+    const [err,setErr] =useState(false);
+  
   useEffect(() => {
       getAllArticles(topic)
       .then((data) => {
           setArticles(data);
           setIsLoading(false);
+          window.history.replaceState(null, null, `/articles?topics=${topic}`)
       })
+      .catch((err) => {
+        setErr("Something Wrong! Please try again later!");
+      })
+      setErr(false);
     }, [topic]);
+
+ 
+    
   
     const updateTopic = (event) => {
       setTopic (event.target.value);
     };
+
+
 
     if(isLoading) {
       return <h2> Loading ... </h2>
@@ -25,9 +37,13 @@ function ArticleList() {
 
     return (
       <div>
+       <section>  {err ? <p>{err}</p> : null}</section>
         <label htmlFor="topic-selector">Choose a topic:</label>
         <p></p>
         <select onChange={updateTopic} className="topic-options" id ="topic-selector">
+        <option value="" hidden>
+          Change Topics
+          </option>
         <option value="">
           All Topics
         </option>
