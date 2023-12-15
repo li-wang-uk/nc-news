@@ -11,24 +11,23 @@ function NewComment({comments,setComments}) {
     const handleChange = (event) => {
         setInput(event.target.value)
     }
-    
+    let temporaryId = Math.random()
+    const newComment = {body: input, author: "tickle122"}
+
     useEffect(() => {
         getAllCommentsById(article_id)
         .then(data => {
             setComments(data)
         })
     },[])
-    let temporaryId = Math.random()
-    const newComment = {body: input, author: "tickle122"}
+    
     const handleSubmit = (event) => {
         event.preventDefault()
         newComment.comment_id = temporaryId;
         newComment.votes = 0;
         setComments((currComments) => {
-        return[newComment,...currComments]
-
-    })
-
+        return[newComment,...currComments]})
+        
         postNewComment(article_id,newComment)
         .catch((err) => {
             setErr('Something went wrong, please try again.')
@@ -36,9 +35,13 @@ function NewComment({comments,setComments}) {
                 return comments.slice(1)
             })
         })
+        .finally(() => {
+            window.location.reload()
+        })
         setInput("")
         setErr(false)
 
+        
     }
 
     return (

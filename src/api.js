@@ -48,3 +48,7 @@ export const getAllTopics = () => {
         return data.topics;
     })
 }
+
+export const deleteCommentById = (comment_id) => {
+    return NcNewsApi.delete(`/comments/${comment_id}`)
+}
