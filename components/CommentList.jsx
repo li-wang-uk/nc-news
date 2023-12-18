@@ -3,12 +3,14 @@ import { deleteCommentById, getAllCommentsById } from "../src/api";
 import CommentCard from "./CommentCard";
 import { useParams } from 'react-router-dom';
 import NewComment from "./NewComment";
+
 function CommentList() {
     const[comments,setComments] = useState([])
     const [isLoading, setIsLoading] = useState(true);
     const {article_id} = useParams();
     const [message,setMessage] =useState(null)
     const [err,setErr] =useState(false)
+
     useEffect(() => {
         getAllCommentsById(article_id)
         .then((data) => {
@@ -16,6 +18,11 @@ function CommentList() {
                 setComments(data);
                 setIsLoading(false);
         })
+        .catch((err) => {
+            setErr("Something Wrong! Please try again later!");
+            setIsLoading(false);
+        })
+        setErr(false);
     },[])
 
 
@@ -45,7 +52,9 @@ function CommentList() {
     
     if(isLoading) {
         return <h2> Loading ... </h2>
-      }
+      } else if(err){
+        return <p>{err}</p>
+      } else 
     return (
         <div>   
             <NewComment comments = {comments} setComments = {setComments}/>

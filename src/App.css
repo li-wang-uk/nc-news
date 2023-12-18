@@ -2,9 +2,10 @@
     background-color:#BDE3FF;
     padding: 2%;
     display:inline-block;
-    max-width: fit-content;
-    max-height: max-content;
-
+    max-width: 350px;
+    max-height: 350px;
+    min-width:350px;
+    min-height:350px;
     margin: 20px;
     border-radius: 28px;
 }
@@ -47,8 +48,10 @@
     background-color:#f5dc8b;
     padding: 2%;
     display:inline-block;
-    max-width: fit-content;
-    max-height: max-content;
+    max-width: 350px;
+    max-height: 350px;
+    min-width:350px;
+    min-height:350px;
 
     margin: 20px;
     border-radius: 28px;
@@ -80,8 +83,10 @@
     background-color:#bbf4c4;
     padding: 2%;
     display:inline-block;
-    max-width: fit-content;
-    max-height: max-content;
+    max-width: 150px;
+    max-height: 150px;
+    min-width:150px;
+    min-height:150px;
     margin: 20px;
     border-radius: 12px;
 }

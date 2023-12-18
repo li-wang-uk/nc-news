@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getAllCommentsById, postNewComment } from "../src/api";
-
+import Error from "./error";
 
 function NewComment({comments,setComments}) {
 
     const [input, setInput] = useState("")
     const [err,setErr] = useState(null)
     const {article_id} = useParams();
+    const [apiErr, setApiErr] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
     const handleChange = (event) => {
         setInput(event.target.value)
     }
@@ -18,6 +20,7 @@ function NewComment({comments,setComments}) {
         getAllCommentsById(article_id)
         .then(data => {
             setComments(data)
+            setIsLoading(false)
         })
     },[])
     
@@ -34,9 +37,11 @@ function NewComment({comments,setComments}) {
             setComments((comments) => {
                 return comments.slice(1)
             })
+            setApiErr(err);
+            setIsLoading(false)
         })
         .finally(() => {
-            window.location.reload()
+            setTimeout(function(){window.location.reload()},5000);
         })
         setInput("")
         setErr(false)
@@ -44,6 +49,12 @@ function NewComment({comments,setComments}) {
         
     }
 
+    
+    if(isLoading) {
+        return <h2> Loading ... </h2>
+      }else if(apiErr){
+        return <Error message={apiErr.message} />
+      } else 
     return (
   
         <form className="new-comment">

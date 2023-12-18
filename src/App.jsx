@@ -9,6 +9,7 @@ import AllArticlesPage from "../pages/AllArticlesPage";
 import Nav from "../components/Nav";
 import IndividualArticalPage from "../pages/IndividualArticlePage";
 import AllTopicsPage from "../pages/AllTopicsPage";
+import Error from "../components/error";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
   <Route path='/articles' element = {<AllArticlesPage/>} />
   <Route path='/articles/:article_id' element = {<IndividualArticalPage/>} />
   <Route path='/topics' element = {<AllTopicsPage/>} />
+  <Route path='/*' element = {<Error message="Route not found"/>}/>
 </Routes>
 <Footer/>
 
