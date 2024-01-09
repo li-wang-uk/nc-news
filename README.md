@@ -1,4 +1,6 @@
 Link of the project: https://enchanting-gecko-48e3f2.netlify.app/
+
+
 •	Have a look at your API endpoints. Think about what data you have available, and how you will structure your application. What routes will your application have? What articles will you choose to display on the main page?
 API Available: 
 - GET /api
